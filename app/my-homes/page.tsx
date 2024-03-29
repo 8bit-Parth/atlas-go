@@ -3,9 +3,11 @@ import prisma from "../lib/db";
 import { redirect } from "next/navigation";
 import { NoItems } from "../components/NoItem";
 import { ListingCard } from "../components/ListingCard";
-import { Irish_Grover } from "next/font/google";
+import {unstable_noStore as noStore } from 'next/cache';
+
 
 async function getData(userId: string) {
+    noStore();
     const data = await prisma.home.findMany({
         where: {
             userId: userId,
