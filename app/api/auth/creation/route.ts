@@ -32,5 +32,11 @@ export async function GET() {
         });
     }
 
+    // const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
+    // console.log("Current URL:", currentUrl);
+
+    // return NextResponse.redirect(currentUrl);
+
     return NextResponse.redirect("https://atlas-go.vercel.app");
+    // return NextResponse.redirect("http://localhost:3000");
 } 
