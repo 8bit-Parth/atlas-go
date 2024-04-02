@@ -14,7 +14,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Install Dependencies
+      - name: Install all Dependencies
         run: npm install
       - name: Generate Deployment Package
         run: zip -r atlas-go-build.zip .
