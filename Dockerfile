@@ -14,8 +14,6 @@ RUN npm install @supabase/supabase-js
 
 RUN npm run build
 
-# COPY .next ./.next
-
 EXPOSE 3000
 
 ENV HOSTNAME "0.0.0.0"

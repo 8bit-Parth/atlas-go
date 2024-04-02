@@ -1,23 +1,30 @@
-name: Deploy to Vercel
+name: Deploy Next.js Web Application
 
 on:
   push:
     branches:
-      - main  
+      - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout Source
+        uses: actions/checkout@v4
+      - name: Build docker image
+        run: docker build -t parth7091/atlas-go .
+      - name: Login to docker hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - name: Publish image to docker hub
+        run: docker push parth7091/atlas-go:latest
 
+  deploy:
+    needs: build
+    runs-on: self-hosted
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Install Vercel CLI
-      run: npm install -g vercel
-
-    # - name: Login to Vercel
-    #   run: vercel login --email ${{ secrets.VERCEL_EMAIL }} --token ${{ secrets.VERCEL_TOKEN }}
-
-    - name: Deploy to Vercel
-      run: vercel --prod
+      - name: Pull image from docker hub
+        run: docker pull parth7091/atlas-go:latest
+      - name: Delete old container
+        run: docker rm -f atlas-go-app-container  
+      - name: Run docker container
+        run: docker run -d -p 3000:3000 --name atlas-go-app-container parth7091/atlas-go 
