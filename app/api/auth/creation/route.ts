@@ -37,8 +37,8 @@ export async function GET() {
 
     // return NextResponse.redirect(currentUrl);
 
-    return NextResponse.redirect("https://atlas-go.vercel.app");
+    // return NextResponse.redirect("https://atlas-go.vercel.app");
     // return NextResponse.redirect("http://3.77.235.151:3000");
-    // return NextResponse.redirect("http://localhost:3000");
+    return NextResponse.redirect("http://localhost:3000");
 
 } 
