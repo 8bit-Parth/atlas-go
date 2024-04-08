@@ -17,9 +17,10 @@ phases:
     commands:
       - echo "Running tests..."
       - echo "Building Docker image..."
+      - echo "echo SUPABASE_URL"=${{ secrets.SUPABASE_URL }}""
       - echo "$DOCKER_REGISTRY_PASSWORD" | docker login -u "$DOCKER_REGISTRY_USERNAME" --password-stdin "$DOCKER_REGISTRY_URL"
-      - docker build -t "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/atlas-go:latest" .
-      - docker push "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/atlas-go:latest"
+      - docker build -t "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/Atlas-go:latest" .
+      - docker push "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/Atlas-go:latest"
   post_build:
     commands:
       - echo "Build completed successfully!"
