@@ -32,12 +32,12 @@ export async function GET() {
         });
     }
 
-    // const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
-    // console.log("Current URL:", currentUrl);
+    const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
+    console.log("Current URL:", currentUrl);
 
-    // return NextResponse.redirect(currentUrl);
+    return NextResponse.redirect(currentUrl);
 
-    return NextResponse.redirect("http://ec2-18-196-31-220.eu-central-1.compute.amazonaws.com:3000");
-    // return NextResponse.redirect("http://3.77.235.151:3000");
-    // return NextResponse.redirect("http://localhost:3000");
+    // return NextResponse.redirect("http://ec2-18-196-31-220.eu-central-1.compute.amazonaws.com:3000");
+    // // return NextResponse.redirect("http://3.77.235.151:3000");
+    // // return NextResponse.redirect("http://localhost:3000");
 } 
